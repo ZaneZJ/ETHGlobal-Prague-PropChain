@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Kaftan';
+  src: url('/fonts/kaftan-trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* You can use the font in your CSS like this: */
+.kaftan-text {
+  font-family: 'Kaftan', serif;
+} 
