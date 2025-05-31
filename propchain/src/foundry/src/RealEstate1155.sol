@@ -13,13 +13,13 @@ contract RealEstate1155 is ERC1155, Ownable {
 
     event PropertyCreated(uint256 indexed propertyId, string uri);
 
-    constructor() ERC1155("") {}
+    constructor() ERC1155("") Ownable(msg.sender){}
 
-    function createProperty(address to, string memory uri) external onlyOwner returns (uint256) {
+    function createProperty(address to, string memory propertyUri) external onlyOwner returns (uint256) {
         uint256 propertyId = nextPropertyId++;
         _mint(to, propertyId, FRACTIONS, "");
-        propertyURIs[propertyId] = uri;
-        emit PropertyCreated(propertyId, uri);
+        propertyURIs[propertyId] = propertyUri;
+        emit PropertyCreated(propertyId, propertyUri);
         return propertyId;
     }
 
