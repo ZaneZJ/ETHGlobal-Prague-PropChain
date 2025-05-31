@@ -32,7 +32,7 @@ const Header = () => {
         <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-700 uppercase" style={{ marginRight: '150px' }}>
           <Link href="/" className="transition-colors duration-200 hover:text-yellow-600">Home</Link>
           <Link href="/explore" className="transition-colors duration-200 hover:text-yellow-600">Explore</Link>
-          <Link href="#" className="transition-colors duration-200 hover:text-yellow-600">Contacts</Link>
+          <Link href="/contacts" className="transition-colors duration-200 hover:text-yellow-600">Contacts</Link>
           <Link href="#" className="transition-colors duration-200 hover:text-yellow-600">Access</Link>
           <button
             type="button"
@@ -71,7 +71,7 @@ const Header = () => {
           <Link href="/explore" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             EXPLORE
           </Link>
-          <Link href="#" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Link href="/contacts" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             CONTACTS
           </Link>
           <Link href="#" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
