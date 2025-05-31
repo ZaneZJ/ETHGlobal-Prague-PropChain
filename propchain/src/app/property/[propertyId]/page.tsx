@@ -25,13 +25,14 @@ const dubaiProperty = {
   highlights: [
     "Stunning penthouse with panoramic views of Dubai Marina and the Arabian Gulf.",
     "High-end finishes and premium appliances throughout the property.",
-    "Access to exclusive marina facilities and private beach club."
+    "Access to exclusive marina facilities and private beach club.",
   ],
-  overview: "This premium penthouse in Dubai Marina offers an exceptional investment opportunity in one of Dubai's most sought-after locations. The property features modern architecture, luxury finishes, and breathtaking views of the marina and city skyline.",
+  overview:
+    "This premium penthouse in Dubai Marina offers an exceptional investment opportunity in one of Dubai's most sought-after locations. The property features modern architecture, luxury finishes, and breathtaking views of the marina and city skyline.",
   plan: [
     "Secure long-term rental agreements with high-net-worth individuals.",
     "Implement value-add improvements to maximize rental returns.",
-    "Explore potential for short-term luxury rentals during peak seasons."
+    "Explore potential for short-term luxury rentals during peak seasons.",
   ],
   location: {
     city: "Dubai",
@@ -39,9 +40,9 @@ const dubaiProperty = {
     highlights: [
       "Located in the heart of Dubai Marina, one of the most prestigious waterfront communities.",
       "Walking distance to Dubai Marina Mall and the beach.",
-      "Excellent connectivity to major highways and Dubai Metro."
-    ]
-  }
+      "Excellent connectivity to major highways and Dubai Metro.",
+    ],
+  },
 };
 
 // Add this above the main component
@@ -51,12 +52,25 @@ interface CircularProgressProps {
   stroke?: number;
 }
 
-function CircularProgress({ percent, size = 80, stroke = 7 }: CircularProgressProps) {
+function CircularProgress({
+  percent,
+  size = 80,
+  stroke = 7,
+}: CircularProgressProps) {
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference * (1 - percent / 100);
   return (
-    <svg width={size} height={size} className="block" style={{ display: 'block', position: 'relative', fontFamily: 'Montserrat, sans-serif' }}>
+    <svg
+      width={size}
+      height={size}
+      className="block"
+      style={{
+        display: "block",
+        position: "relative",
+        fontFamily: "Montserrat, sans-serif",
+      }}
+    >
       <circle
         cx={size / 2}
         cy={size / 2}
@@ -75,7 +89,11 @@ function CircularProgress({ percent, size = 80, stroke = 7 }: CircularProgressPr
         strokeDasharray={circumference}
         strokeDashoffset={offset}
         strokeLinecap="round"
-        style={{ transition: 'stroke-dashoffset 0.5s', transform: `rotate(-90deg)`, transformOrigin: '50% 50%' }}
+        style={{
+          transition: "stroke-dashoffset 0.5s",
+          transform: `rotate(-90deg)`,
+          transformOrigin: "50% 50%",
+        }}
       />
       <g>
         <text
@@ -86,7 +104,7 @@ function CircularProgress({ percent, size = 80, stroke = 7 }: CircularProgressPr
           fontWeight="400"
           fill="#ea9800"
           dominantBaseline="middle"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
+          style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           {percent}%
         </text>
@@ -97,7 +115,10 @@ function CircularProgress({ percent, size = 80, stroke = 7 }: CircularProgressPr
           fontSize="10px"
           fill="#888"
           fontWeight="400"
-          style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.5px' }}
+          style={{
+            fontFamily: "Montserrat, sans-serif",
+            letterSpacing: "0.5px",
+          }}
         >
           RAISED
         </text>
@@ -118,7 +139,7 @@ export default function DubaiPropertyPage() {
 
   // Handler for input and slider
   const handleInvestmentChange = (val: string | number) => {
-    let value = typeof val === 'number' ? val : Number(val);
+    let value = typeof val === "number" ? val : Number(val);
     if (isNaN(value)) value = 0;
     if (value < minInvestment) value = minInvestment;
     if (value > maxInvestment) value = maxInvestment;
@@ -129,56 +150,126 @@ export default function DubaiPropertyPage() {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <div className="flex-1 flex items-center justify-center text-gray-500 text-xl">Property not found.</div>
+        <div className="flex-1 flex items-center justify-center text-gray-500 text-xl">
+          Property not found.
+        </div>
         <Footer />
       </div>
     );
   }
 
   return (
-    <div className={`min-h-screen flex flex-col bg-white ${montserrat.className}`}>
+    <div
+      className={`min-h-screen flex flex-col bg-white ${montserrat.className}`}
+    >
       <Header />
       {/* Property Title at the Top */}
-      <div className="w-full max-w-5xl mx-auto px-2 md:px-6 pt-8 pb-2" style={{marginTop: '100px', marginBottom: '-20px', position: 'relative'}}>
-        <div style={{
-          height: '1px',
-          width: '50vw',
-          background: 'linear-gradient(to right,rgb(0, 0, 0) 60%, rgba(238,230,213,0) 100%)',
-          position: 'absolute',
-          left: 'calc(-50vw + 40%)',
-          marginTop: '15px',
-          top: 0,
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}></div>
-        <h1 className="text-3xl md:text-4xl" style={{ fontFamily: 'Kaftan, serif', fontWeight: 400, position: 'relative', zIndex: 1 }}>{property.name}</h1>
-        <div className="text-gray-600 text-base mt-2" style={{position: 'relative', zIndex: 1}}>{property.address}</div>
+      <div
+        className="w-full max-w-5xl mx-auto px-2 md:px-6 pt-8 pb-2"
+        style={{
+          marginTop: "100px",
+          marginBottom: "-20px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            height: "1px",
+            width: "50vw",
+            background:
+              "linear-gradient(to right,rgb(0, 0, 0) 60%, rgba(238,230,213,0) 100%)",
+            position: "absolute",
+            left: "calc(-50vw + 40%)",
+            marginTop: "15px",
+            top: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        ></div>
+        <h1
+          className="text-3xl md:text-4xl"
+          style={{
+            fontFamily: "Kaftan, serif",
+            fontWeight: 400,
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {property.name}
+        </h1>
+        <div
+          className="text-gray-600 text-base mt-2"
+          style={{ position: "relative", zIndex: 1 }}
+        >
+          {property.address}
+        </div>
       </div>
-      <main className="flex-1 w-full max-w-5xl mx-auto px-2 md:px-6 py-10" style={{marginTop: '0px'}}>
+      <main
+        className="flex-1 w-full max-w-5xl mx-auto px-2 md:px-6 py-10"
+        style={{ marginTop: "0px" }}
+      >
         {/* Top Section: Image, Badges, and Summary */}
-        <div className="relative w-full overflow-hidden shadow-lg border border-gray-200 mb-8" style={{height: '340px', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem', borderBottomLeftRadius: 0, borderBottomRightRadius: 0}}>
+        <div
+          className="relative w-full overflow-hidden shadow-lg border border-gray-200 mb-8"
+          style={{
+            height: "340px",
+            borderTopLeftRadius: "1rem",
+            borderTopRightRadius: "1rem",
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0,
+          }}
+        >
           {/* Property Image */}
           <Image
             src={property.image}
             alt={property.name}
             fill
             className="object-cover"
-            style={{zIndex: 1}}
+            style={{ zIndex: 1 }}
           />
           {/* Status and Info Badges */}
           <div className="absolute top-4 left-4 flex gap-2 z-10">
-            <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-semibold px-3 py-1 rounded">Open</span>
-            <span className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded flex items-center gap-1"><svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3 days left</span>
+            <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-semibold px-3 py-1 rounded">
+              Open
+            </span>
+            <span className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded flex items-center gap-1">
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>{" "}
+              3 days left
+            </span>
           </div>
           <div className="absolute top-4 right-4 flex gap-2 z-10">
-            <span className="bg-[#ffffff] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Up to 1.5% Bonus interest</span>
-            <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Viewed by 156 investors</span>
+            <span className="bg-[#ffffff] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">
+              Up to 1.5% Bonus interest
+            </span>
+            <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">
+              Viewed by 156 investors
+            </span>
           </div>
         </div>
         {/* Summary Card */}
-        <div className="w-full bg-white rounded-xl shadow border border-gray-100 flex flex-wrap justify-between items-center px-6 py-4 mb-8" style={{marginTop: '-40px', zIndex: 2, position: 'relative', fontFamily: 'Montserrat, sans-serif'}}>
+        <div
+          className="w-full bg-white rounded-xl shadow border border-gray-100 flex flex-wrap justify-between items-center px-6 py-4 mb-8"
+          style={{
+            marginTop: "-40px",
+            zIndex: 2,
+            position: "relative",
+            fontFamily: "Montserrat, sans-serif",
+          }}
+        >
           <div className="flex flex-col items-center min-w-[120px]">
-            <div className="mb-1"><CircularProgress percent={45} size={80} stroke={7} /></div>
+            <div className="mb-1">
+              <CircularProgress percent={45} size={80} stroke={7} />
+            </div>
             <span className="text-xs text-gray-400 mt-1">275,000$ left</span>
             <span className="text-xs text-gray-400">32 investors</span>
           </div>
@@ -209,35 +300,64 @@ export default function DubaiPropertyPage() {
           </div>
         </div>
         {/* Investment and Location Sections */}
-        <div className="w-full flex flex-col md:flex-row gap-8 mb-10" style={{ position: 'relative', zIndex: 2, marginTop: '60px' }}>
+        <div
+          className="w-full flex flex-col md:flex-row gap-8 mb-10"
+          style={{ position: "relative", zIndex: 2, marginTop: "60px" }}
+        >
           {/* Enter amount to invest card */}
-          <div className="flex-1 basis-1/2 bg-white shadow p-6 mx-auto md:mx-0" style={{border: '1px solid #e6e8f0'}}>
-            <div className="relative mb-4" style={{height: '40px'}}>
-              <div style={{
-                backgroundColor: 'rgb(238, 230, 213)',
-                height: '35px',
-                width: '300px',
-                position: 'absolute',
-                left: '-25px',
-                top: '38%',
-                transform: 'translateY(-50%)',
-                zIndex: 0
-              }}></div>
-              <div className="text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif', position: 'relative', zIndex: 1, textTransform: 'uppercase', fontWeight: 400, fontSize: '18px' }}>Enter amount to invest</div>
+          <div
+            className="flex-1 basis-1/2 bg-white shadow p-6 mx-auto md:mx-0"
+            style={{ border: "1px solid #e6e8f0" }}
+          >
+            <div className="relative mb-4" style={{ height: "40px" }}>
+              <div
+                style={{
+                  backgroundColor: "rgb(238, 230, 213)",
+                  height: "35px",
+                  width: "300px",
+                  position: "absolute",
+                  left: "-25px",
+                  top: "38%",
+                  transform: "translateY(-50%)",
+                  zIndex: 0,
+                }}
+              ></div>
+              <div
+                className="text-gray-900"
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  position: "relative",
+                  zIndex: 1,
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                  fontSize: "18px",
+                }}
+              >
+                Enter amount to invest
+              </div>
             </div>
             <div className="relative mb-4">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">$</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
+                $
+              </span>
               <input
                 type="number"
                 min={minInvestment}
                 max={maxInvestment}
                 value={investment}
-                onChange={e => handleInvestmentChange(e.target.value)}
+                onChange={(e) => handleInvestmentChange(e.target.value)}
                 className="w-full border border-gray-300 rounded-md px-9 py-2 text-lg bg-white focus:outline-none focus:ring-2"
                 placeholder="Amount in $"
-                style={{paddingLeft: '2.2rem', boxShadow: '0 0 0 0px #ea9800'}}
-                onFocus={e => e.currentTarget.style.boxShadow = '0 0 0 2px #ea9800'}
-                onBlur={e => e.currentTarget.style.boxShadow = '0 0 0 0px #ea9800'}
+                style={{
+                  paddingLeft: "2.2rem",
+                  boxShadow: "0 0 0 0px #ea9800",
+                }}
+                onFocus={(e) =>
+                  (e.currentTarget.style.boxShadow = "0 0 0 2px #ea9800")
+                }
+                onBlur={(e) =>
+                  (e.currentTarget.style.boxShadow = "0 0 0 0px #ea9800")
+                }
               />
             </div>
             {/* Slider */}
@@ -246,38 +366,45 @@ export default function DubaiPropertyPage() {
               min={minInvestment}
               max={maxInvestment}
               value={investmentNum}
-              onChange={e => handleInvestmentChange(e.target.value)}
+              onChange={(e) => handleInvestmentChange(e.target.value)}
               className="w-full mb-2"
               style={{
-                accentColor: '#ea9800',
-                background: 'linear-gradient(to right, #ea9800 0%, #e5e7eb 100%)',
-                height: '4px',
-                borderRadius: '2px',
+                accentColor: "#ea9800",
+                background:
+                  "linear-gradient(to right, #ea9800 0%, #e5e7eb 100%)",
+                height: "4px",
+                borderRadius: "2px",
               }}
             />
             <div className="flex justify-between text-gray-500 text-sm mb-2">
               <span>{investment} $</span>
               <span>275,000 $</span>
             </div>
-            <div className="mb-6 text-base">Potential earnings: <span className="font-semibold" style={{ color: '#ea9800' }}>€12.50</span> <span className="text-gray-700">(12%)</span></div>
+            <div className="mb-6 text-base">
+              Potential earnings:{" "}
+              <span className="font-semibold" style={{ color: "#ea9800" }}>
+                €12.50
+              </span>{" "}
+              <span className="text-gray-700">(12%)</span>
+            </div>
             <a
               href="#"
               className="w-full block py-2 text-lg font-medium border text-center"
               style={{
-                border: '1px solid #ea9800',
-                color: '#ea9800',
-                background: 'white',
+                border: "1px solid #ea9800",
+                color: "#ea9800",
+                background: "white",
                 borderRadius: 0,
-                textTransform: 'uppercase',
-                transition: 'background 0.4s ease, color 0.4s ease',
+                textTransform: "uppercase",
+                transition: "background 0.4s ease, color 0.4s ease",
               }}
-              onMouseOver={e => {
-                e.currentTarget.style.background = '#ea9800';
-                e.currentTarget.style.color = 'white';
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = "#ea9800";
+                e.currentTarget.style.color = "white";
               }}
-              onMouseOut={e => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.color = '#ea9800';
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = "white";
+                e.currentTarget.style.color = "#ea9800";
               }}
             >
               INVEST NOW
@@ -285,29 +412,52 @@ export default function DubaiPropertyPage() {
           </div>
           {/* Location card */}
           <div className="flex-1 basis-1/2 bg-white shadow p-6 mx-auto md:mx-0 border border-gray-200">
-            <div className="relative mb-4" style={{height: '40px'}}>
-              <div style={{
-                backgroundColor: 'rgb(238, 230, 213)',
-                height: '35px',
-                width: '150px',
-                position: 'absolute',
-                left: '-25px',
-                top: '38%',
-                transform: 'translateY(-50%)',
-                zIndex: 0
-              }}></div>
-              <div className="text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif', position: 'relative', zIndex: 1, textTransform: 'uppercase', fontWeight: 400, fontSize: '18px' }}>Location</div>
+            <div className="relative mb-4" style={{ height: "40px" }}>
+              <div
+                style={{
+                  backgroundColor: "rgb(238, 230, 213)",
+                  height: "35px",
+                  width: "150px",
+                  position: "absolute",
+                  left: "-25px",
+                  top: "38%",
+                  transform: "translateY(-50%)",
+                  zIndex: 0,
+                }}
+              ></div>
+              <div
+                className="text-gray-900"
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  position: "relative",
+                  zIndex: 1,
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                  fontSize: "18px",
+                }}
+              >
+                Location
+              </div>
             </div>
-            <div className="mb-2 text-gray-900 font-medium">{property.address}</div>
-            <div className="mb-2 text-gray-500 text-sm">Reg. nr: 1094-0456-6012:0042 • Total area: 250.00m²</div>
-            <div className="w-full h-36 bg-gray-200 flex items-center justify-center mb-3 relative overflow-hidden" style={{ borderRadius: '8px' }}>
+            <div className="mb-2 text-gray-900 font-medium">
+              {property.address}
+            </div>
+            <div className="mb-2 text-gray-500 text-sm">
+              Reg. nr: 1094-0456-6012:0042 • Total area: 250.00m²
+            </div>
+            <div
+              className="w-full h-36 bg-gray-200 flex items-center justify-center mb-3 relative overflow-hidden"
+              style={{ borderRadius: "8px" }}
+            >
               <iframe
                 title="Property Location"
                 width="100%"
                 height="100%"
                 frameBorder="0"
-                style={{ border: 0, filter: 'grayscale(1)', opacity: 0.85 }}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(property.address)}&output=embed`}
+                style={{ border: 0, filter: "grayscale(1)", opacity: 0.85 }}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(
+                  property.address
+                )}&output=embed`}
                 allowFullScreen
               ></iframe>
               <span className="absolute inset-0 flex items-center justify-center z-10">
@@ -315,20 +465,20 @@ export default function DubaiPropertyPage() {
                   href="/explore"
                   className="px-4 py-2 text-lg font-medium border text-center"
                   style={{
-                    border: '1px solid #ea9800',
-                    color: '#ea9800',
-                    background: 'white',
+                    border: "1px solid #ea9800",
+                    color: "#ea9800",
+                    background: "white",
                     borderRadius: 0,
-                    textTransform: 'uppercase',
-                    transition: 'background 0.4s ease, color 0.4s ease',
+                    textTransform: "uppercase",
+                    transition: "background 0.4s ease, color 0.4s ease",
                   }}
-                  onMouseOver={e => {
-                    e.currentTarget.style.background = '#ea9800';
-                    e.currentTarget.style.color = 'white';
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = "#ea9800";
+                    e.currentTarget.style.color = "white";
                   }}
-                  onMouseOut={e => {
-                    e.currentTarget.style.background = 'white';
-                    e.currentTarget.style.color = '#ea9800';
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = "white";
+                    e.currentTarget.style.color = "#ea9800";
                   }}
                 >
                   Show map
@@ -336,15 +486,45 @@ export default function DubaiPropertyPage() {
               </span>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <span className="px-3 py-1 rounded text-xs font-semibold flex items-center gap-1" style={{ background: '#fff9f0', color: '#ea9800' }}><svg width="14" height="14" fill="none" stroke="#ea9800" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2"/></svg>LUXURY</span>
+              <span
+                className="px-3 py-1 rounded text-xs font-semibold flex items-center gap-1"
+                style={{ background: "#fff9f0", color: "#ea9800" }}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  stroke="#ea9800"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M3 12l2-2 4 4 8-8 2 2" />
+                </svg>
+                LUXURY
+              </span>
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-10" style={{ position: 'relative', zIndex: 2, marginBottom: '-50px' }}>
+        <div
+          className="flex flex-col md:flex-row gap-10"
+          style={{ position: "relative", zIndex: 2, marginBottom: "-50px" }}
+        >
           {/* Main Info */}
-          <div className="flex-1 flex flex-col gap-4" style={{fontFamily: 'Montserrat, sans-serif', marginTop: '20px'}}>
+          <div
+            className="flex-1 flex flex-col gap-4"
+            style={{ fontFamily: "Montserrat, sans-serif", marginTop: "20px" }}
+          >
             <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Project Highlights</h2>
+              <h2
+                className="text-lg text-gray-900"
+                style={{
+                  fontFamily: "Kaftan, serif",
+                  letterSpacing: "0.06em",
+                  fontWeight: 400,
+                }}
+              >
+                Project Highlights
+              </h2>
               <ul className="list-disc list-inside text-gray-700 text-sm">
                 {property.highlights.map((h, i) => (
                   <li key={i}>{h}</li>
@@ -352,11 +532,29 @@ export default function DubaiPropertyPage() {
               </ul>
             </div>
             <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Project Overview</h2>
+              <h2
+                className="text-lg text-gray-900"
+                style={{
+                  fontFamily: "Kaftan, serif",
+                  letterSpacing: "0.06em",
+                  fontWeight: 400,
+                }}
+              >
+                Project Overview
+              </h2>
               <p className="text-gray-700 text-sm">{property.overview}</p>
             </div>
             <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Project Plan</h2>
+              <h2
+                className="text-lg text-gray-900"
+                style={{
+                  fontFamily: "Kaftan, serif",
+                  letterSpacing: "0.06em",
+                  fontWeight: 400,
+                }}
+              >
+                Project Plan
+              </h2>
               <ul className="list-disc list-inside text-gray-700 text-sm">
                 {property.plan.map((p, i) => (
                   <li key={i}>{p}</li>
@@ -364,8 +562,19 @@ export default function DubaiPropertyPage() {
               </ul>
             </div>
             <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Location</h2>
-              <div className="text-gray-700 text-sm mb-1">{property.location.city} - {property.location.district}</div>
+              <h2
+                className="text-lg text-gray-900"
+                style={{
+                  fontFamily: "Kaftan, serif",
+                  letterSpacing: "0.06em",
+                  fontWeight: 400,
+                }}
+              >
+                Location
+              </h2>
+              <div className="text-gray-700 text-sm mb-1">
+                {property.location.city} - {property.location.district}
+              </div>
               <ul className="list-disc list-inside text-gray-700 text-sm">
                 {property.location.highlights.map((h, i) => (
                   <li key={i}>{h}</li>
@@ -375,7 +584,45 @@ export default function DubaiPropertyPage() {
           </div>
         </div>
       </main>
+      <div className="w-full max-w-5xl mx-auto px-2 md:px-6 py-8">
+        <h2
+          className="text-lg text-gray-900 mb-4"
+          style={{
+            fontFamily: "Kaftan, serif",
+            letterSpacing: "0.06em",
+            fontWeight: 400,
+          }}
+        >
+          Token Ownership
+        </h2>
+        <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead>
+            <tr>
+              <th className="py-2 px-4 border-b text-left text-xs text-gray-500">
+                Address
+              </th>
+              <th className="py-2 px-4 border-b text-left text-xs text-gray-500">
+                Tokens Owned
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { address: "0x123...abcd", tokens: 1200 },
+              { address: "0x456...ef12", tokens: 800 },
+              { address: "0x789...3456", tokens: 500 },
+            ].map((owner, i) => (
+              <tr key={i}>
+                <td className="py-2 px-4 border-b font-mono text-sm">
+                  {owner.address}
+                </td>
+                <td className="py-2 px-4 border-b">{owner.tokens}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Footer />
     </div>
   );
-} 
+}
