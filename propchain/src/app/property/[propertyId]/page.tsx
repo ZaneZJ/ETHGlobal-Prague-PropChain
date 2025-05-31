@@ -440,14 +440,14 @@ export default function DubaiPropertyPage() {
               <div style={{
                 backgroundColor: 'rgb(238, 230, 213)',
                 height: '35px',
-                width: '150px',
+                width: '175px',
                 position: 'absolute',
                 left: '-25px',
                 top: '38%',
                 transform: 'translateY(-50%)',
                 zIndex: 0
               }}></div>
-              <div className="text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif', position: 'relative', zIndex: 1, textTransform: 'uppercase', fontWeight: 400, fontSize: '18px' }}>Chat Bot</div>
+              <div className="text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif', position: 'relative', zIndex: 1, textTransform: 'uppercase', fontWeight: 400, fontSize: '18px' }}>AI ASSISTANT</div>
             </div>
             <div className="flex-1 bg-gray-50 rounded p-4 overflow-y-auto mb-4" style={{ minHeight: '260px', maxHeight: '320px' }}>
               {/* Placeholder chat messages */}
