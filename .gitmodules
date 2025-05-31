@@ -1,0 +1,6 @@
+[submodule "propchain/src/foundry/lib/forge-std"]
+	path = propchain/src/foundry/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "propchain/src/foundry/lib/openzeppelin-contracts"]
+	path = propchain/src/foundry/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
