@@ -56,6 +56,15 @@ const sampleProperties = [
     price: '150 ETH',
     description: 'Modern apartment in Prague\'s vibrant district',
     image: '/images/home4.jpg'
+  },
+  {
+    id: '5',
+    name: 'Dubai Marina Penthouse',
+    longitude: 55.1385,
+    latitude: 25.0884,
+    price: '500 ETH',
+    description: 'Luxurious penthouse with marina views',
+    image: '/images/test.jpg'
   }
 ];
 
@@ -257,7 +266,7 @@ export default function ExplorePage() {
                     </div>
                     <div className="flex flex-col gap-2">
                       <a 
-                        href={`/explore/${property.id}`}
+                        href={property.id === '5' ? `/property/${property.id}` : `/explore/${property.id}`}
                         className="bg-[#ea9800] text-white py-2 px-3 text-sm font-medium hover:bg-[#d88a00] transition-colors whitespace-nowrap text-center"
                         onClick={undefined}
                       >
