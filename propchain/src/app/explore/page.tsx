@@ -257,12 +257,9 @@ export default function ExplorePage() {
                     </div>
                     <div className="flex flex-col gap-2">
                       <a 
-                        href="#"
+                        href={`/explore/${property.id}`}
                         className="bg-[#ea9800] text-white py-2 px-3 text-sm font-medium hover:bg-[#d88a00] transition-colors whitespace-nowrap text-center"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          console.log('View details clicked');
-                        }}
+                        onClick={undefined}
                       >
                         View Details
                       </a>
