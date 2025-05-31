@@ -237,7 +237,7 @@ export default function PropertyDetailsPage() {
         {/* Decorative divider as on landing page */}
         <div
             style={{
-              height: '390px',
+              height: '400px',
               width: '100vw',
               position: 'absolute',
               left: '50%',
