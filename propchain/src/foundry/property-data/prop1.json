@@ -1,0 +1,21 @@
+{
+  "name": "Property #123 - 456 Elm Street",
+  "description": "A 3-bedroom house located in Austin, Texas. Tokenized for fractional ownership.",
+  "images": [
+    "ipfs://Qm.../front_view.jpg",
+    "ipfs://Qm.../living_room.jpg",
+    "ipfs://Qm.../kitchen.jpg",
+    "ipfs://Qm.../backyard.jpg",
+    "ipfs://Qm.../floor_plan.png"
+  ],
+  "external_url": "https://realestate-dapp.com/property/123",
+  "attributes": [
+    { "trait_type": "Location", "value": "456 Elm Street, Austin, TX" },
+    { "trait_type": "Property Type", "value": "Residential" },
+    { "trait_type": "Area", "value": "2100 sqft" },
+    { "trait_type": "Built Year", "value": "2009" },
+    { "trait_type": "Valuation", "value": "$550,000" },
+    { "trait_type": "Fractionalized", "value": "Yes" },
+    { "trait_type": "Legal Doc", "value": "ipfs://Qm.../deed.pdf" }
+  ]
+}
