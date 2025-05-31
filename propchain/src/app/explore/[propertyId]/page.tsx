@@ -117,7 +117,7 @@ const sampleProperties = [
     id: "4",
     name: "Modern District Apartment",
     address: "92 Innovation Street, Prague 4, Czech Republic",
-    price: "280,000 $",
+    price: "280,200 $",
     description: "Modern apartment in Prague's vibrant district",
     image: "/images/home4.jpg",
     ltv: "70%",

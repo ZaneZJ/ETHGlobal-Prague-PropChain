@@ -26,7 +26,7 @@ const sampleProperties = [
     name: 'Modern Apartment',
     longitude: 14.4378,
     latitude: 50.0755,
-    price: '100 ETH',
+    price: '254,948',
     description: 'A beautiful property in Prague',
     image: '/images/home1.jpg'
   },
@@ -35,7 +35,7 @@ const sampleProperties = [
     name: 'Luxury Villa',
     longitude: 14.4158,
     latitude: 50.0875,
-    price: '250 ETH',
+    price: '450,000',
     description: 'Spacious villa with garden in Prague 1',
     image: '/images/home2.jpg'
   },
@@ -44,7 +44,7 @@ const sampleProperties = [
     name: 'City Center Loft',
     longitude: 14.4258,
     latitude: 50.0625,
-    price: '180 ETH',
+    price: '320,000',
     description: 'Modern loft in the heart of Prague',
     image: '/images/home3.jpg'
   },
@@ -53,7 +53,7 @@ const sampleProperties = [
     name: 'Modern District Apartment',
     longitude: 14.4658,
     latitude: 50.0525,
-    price: '150 ETH',
+    price: ' 280,200',
     description: 'Modern apartment in Prague\'s vibrant district',
     image: '/images/home4.jpg'
   },
@@ -62,7 +62,7 @@ const sampleProperties = [
     name: 'Dubai Marina Penthouse',
     longitude: 55.1385,
     latitude: 25.0884,
-    price: '500 ETH',
+    price: '500,000',
     description: 'Luxurious penthouse with marina views',
     image: '/images/test.jpg'
   }
@@ -259,7 +259,7 @@ export default function ExplorePage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-gray-900 mb-1">{property.name}</h3>
-                      <p className="text-xl font-bold text-[#ea9800] mb-2">${property.price.toLocaleString()}</p>
+                      <p className="text-xl font-bold text-[#ea9800] mb-2"> ${property.price.toLocaleString()}</p>
                       <div className="flex items-center gap-2 text-gray-600">
                         <span className="text-sm">{property.description}</span>
                       </div>
