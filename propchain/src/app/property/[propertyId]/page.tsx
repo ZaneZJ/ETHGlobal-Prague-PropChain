@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -167,9 +167,47 @@ const nightlyRateData = [
   { month: 'Apr', rate: 520 },
 ];
 
+interface PropertyMetadata {
+  name: string;
+  description: string;
+  images_folder?: string;
+  attributes: Array<{
+    trait_type: string;
+    value: string;
+  }>;
+}
+
+// Add this after the existing interfaces
+interface PropertyImage {
+  src: string;
+  alt: string;
+}
+
 export default function DubaiPropertyPage() {
   const params = useParams();
   const property = dubaiProperty;
+  const [metadata, setMetadata] = useState<PropertyMetadata | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const response = await fetch('/property-data/fixed-metadata.json');
+        if (!response.ok) {
+          throw new Error('Failed to fetch metadata');
+        }
+        const data = await response.json();
+        setMetadata(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMetadata();
+  }, []);
 
   // Add state for investment amount in USD
   const [investment, setInvestment] = useState<string>("50");
@@ -188,6 +226,14 @@ export default function DubaiPropertyPage() {
     if (value > maxInvestment) value = maxInvestment;
     setInvestment(String(value));
   };
+
+  const [selectedImage, setSelectedImage] = useState<string>("/property-data/prop1/prop1-11.avif");
+  const [images] = useState<PropertyImage[]>(() => {
+    return Array.from({ length: 29 }, (_, i) => ({
+      src: `/property-data/prop1/prop1-${i + 1}.avif`,
+      alt: `Property image ${i + 1}`
+    }));
+  });
 
   if (!property) {
     return (
@@ -215,16 +261,20 @@ export default function DubaiPropertyPage() {
           zIndex: 0,
           pointerEvents: 'none'
         }}></div>
-        <h1 className="text-3xl md:text-4xl" style={{ fontFamily: 'Kaftan, serif', fontWeight: 400, position: 'relative', zIndex: 1 }}>{property.name}</h1>
-        <div className="text-gray-600 text-base mt-2" style={{position: 'relative', zIndex: 1}}>{property.address}</div>
+        <h1 className="text-3xl md:text-4xl" style={{ fontFamily: 'Kaftan, serif', fontWeight: 400, position: 'relative', zIndex: 1 }}>
+          {isLoading ? 'Loading...' : error ? 'Error loading property' : metadata?.name || 'Property not found'}
+        </h1>
+        <div className="text-gray-600 text-base mt-2" style={{position: 'relative', zIndex: 1}}>
+          {isLoading ? 'Loading description...' : error ? 'Error loading description' : metadata?.description || 'No description available'}
+        </div>
       </div>
       <main className="flex-1 w-full max-w-5xl mx-auto px-2 md:px-6 py-10" style={{marginTop: '0px'}}>
         {/* Top Section: Image, Badges, and Summary */}
         <div className="relative w-full overflow-hidden shadow-lg border border-gray-200 mb-8" style={{height: '340px', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem', borderBottomLeftRadius: 0, borderBottomRightRadius: 0}}>
           {/* Property Image */}
           <Image
-            src={property.image}
-            alt={property.name}
+            src={selectedImage}
+            alt={metadata?.name || 'Property image'}
             fill
             className="object-cover"
             style={{zIndex: 1}}
@@ -235,10 +285,13 @@ export default function DubaiPropertyPage() {
             <span className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded flex items-center gap-1"><svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3 days left</span>
           </div>
           <div className="absolute top-4 right-4 flex gap-2 z-10">
-            <span className="bg-[#ffffff] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Up to 1.5% Bonus interest</span>
+            <span className="bg-[#ffffff] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">
+              {isLoading ? 'Loading...' : error ? 'Error' : metadata?.attributes.find(attr => attr.trait_type === 'Property Type')?.value || 'Property Type'}
+            </span>
             <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Viewed by 156 investors</span>
           </div>
         </div>
+
         {/* Summary Card */}
         <div className="w-full bg-white rounded-xl shadow border border-gray-100 flex flex-wrap justify-between items-center px-6 py-4 mb-8" style={{marginTop: '-40px', zIndex: 2, position: 'relative', fontFamily: 'Montserrat, sans-serif'}}>
           <div className="flex flex-col items-center min-w-[120px]">
@@ -249,8 +302,10 @@ export default function DubaiPropertyPage() {
             <span className="text-xs text-gray-500">Total amount</span>
           </div>
           <div className="flex flex-col items-center min-w-[120px]">
-            <span className="text-base text-gray-900">{property.period}</span>
-            <span className="text-xs text-gray-500">Period</span>
+            <span className="text-base text-gray-900">
+              {isLoading ? 'Loading...' : error ? 'Error' : metadata?.attributes.find(attr => attr.trait_type === 'Built Year')?.value || 'Built Year'}
+            </span>
+            <span className="text-xs text-gray-500">Built Year</span>
           </div>
           <div className="flex flex-col items-center min-w-[120px]">
             <span className="text-base text-gray-900">{property.country}</span>
@@ -270,6 +325,30 @@ export default function DubaiPropertyPage() {
             <span className="text-xs text-gray-400">Monthly payments</span>
           </div>
         </div>
+
+        {/* Image Gallery */}
+        <div className="w-full overflow-x-auto mb-8 pb-4">
+          <div className="flex gap-4" style={{ minWidth: 'max-content' }}>
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="relative w-32 h-24 cursor-pointer rounded-lg overflow-hidden border-2 transition-all duration-200"
+                style={{
+                  borderColor: selectedImage === image.src ? '#ea9800' : 'transparent'
+                }}
+                onClick={() => setSelectedImage(image.src)}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover hover:scale-110 transition-transform duration-200"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Decorative divider as on landing page */}
         <div
             style={{
@@ -469,7 +548,40 @@ export default function DubaiPropertyPage() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-10" style={{ position: 'relative', zIndex: 2, marginBottom: '-50px' }}>
-          
+          {/* {isLoading ? (
+            <div className="w-full text-center py-8">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ea9800] mx-auto"></div>
+              <p className="mt-4 text-gray-600">Loading property metadata...</p>
+            </div>
+          ) : error ? (
+            <div className="w-full text-center py-8 text-red-500">
+              Error loading metadata: {error}
+            </div>
+          ) : metadata && (
+            <div className="w-full bg-white shadow-lg rounded-lg p-8">
+              <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: 'Kaftan, serif', fontWeight: 400 }}>{metadata.name}</h2>
+              <p className="text-gray-600 mb-6">{metadata.description}</p>
+              
+              {metadata.images_folder && (
+                <div className="mb-6">
+                  <img 
+                    src={`${metadata.images_folder}/main.jpg`} 
+                    alt={metadata.name}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {metadata.attributes.map((attr, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="text-sm font-medium text-gray-500 mb-1">{attr.trait_type}</h3>
+                    <p className="text-gray-900">{attr.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )} */}
         </div>
       </main>
       <Footer />

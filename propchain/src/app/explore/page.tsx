@@ -64,7 +64,7 @@ const sampleProperties = [
     latitude: 25.0884,
     price: '500,000',
     description: 'Luxurious penthouse with marina views',
-    image: '/images/test.jpg'
+    image: '/property-data/prop1/prop1-11.avif'
   }
 ];
 
