@@ -469,38 +469,7 @@ export default function DubaiPropertyPage() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-10" style={{ position: 'relative', zIndex: 2, marginBottom: '-50px' }}>
-          {/* Main Info */}
-          <div className="flex-1 flex flex-col gap-4" style={{fontFamily: 'Montserrat, sans-serif', marginTop: '20px'}}>
-            <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Project Highlights</h2>
-              <ul className="list-disc list-inside text-gray-700 text-sm">
-                {property.highlights.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Project Overview</h2>
-              <p className="text-gray-700 text-sm">{property.overview}</p>
-            </div>
-            <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Project Plan</h2>
-              <ul className="list-disc list-inside text-gray-700 text-sm">
-                {property.plan.map((p, i) => (
-                  <li key={i}>{p}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-2 mb-4">
-              <h2 className="text-lg text-gray-900" style={{ fontFamily: 'Kaftan, serif', letterSpacing: '0.06em', fontWeight: 400 }}>Location</h2>
-              <div className="text-gray-700 text-sm mb-1">{property.location.city} - {property.location.district}</div>
-              <ul className="list-disc list-inside text-gray-700 text-sm">
-                {property.location.highlights.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          
         </div>
       </main>
       <Footer />
