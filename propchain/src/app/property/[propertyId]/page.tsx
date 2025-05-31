@@ -302,6 +302,15 @@ export default function DubaiPropertyPage() {
             <span className="text-xs text-gray-500">Total amount</span>
           </div>
           <div className="flex flex-col items-center min-w-[120px]">
+            <a 
+              href="/tokens" 
+              className="text-base text-[#ea9800] hover:text-[#d88a00] transition-colors"
+            >
+              View Token
+            </a>
+            <span className="text-xs text-gray-500">DMG Token</span>
+          </div>
+          <div className="flex flex-col items-center min-w-[120px]">
             <span className="text-base text-gray-900">
               {isLoading ? 'Loading...' : error ? 'Error' : metadata?.attributes.find(attr => attr.trait_type === 'Built Year')?.value || 'Built Year'}
             </span>

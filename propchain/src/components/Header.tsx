@@ -36,7 +36,7 @@ const Header = () => {
             <Link href="/" className="transition-colors duration-200 hover:text-yellow-600">Home</Link>
             <Link href="/explore" className="transition-colors duration-200 hover:text-yellow-600">Explore</Link>
             <Link href="/contacts" className="transition-colors duration-200 hover:text-yellow-600">Contacts</Link>
-            <Link href="#" className="transition-colors duration-200 hover:text-yellow-600">Access</Link>
+            <Link href="/tokens" className="transition-colors duration-200 hover:text-yellow-600">Tokens</Link>
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -78,8 +78,8 @@ const Header = () => {
           <Link href="/contacts" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             CONTACTS
           </Link>
-          <Link href="#" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            ACCESS
+          <Link href="/tokens" className="text-white mb-4 transition-all duration-400 hover:text-yellow-600 text-sm md:text-base tracking-[0.2em] font-medium uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            TOKENS
           </Link>
         </div>
       </div>
