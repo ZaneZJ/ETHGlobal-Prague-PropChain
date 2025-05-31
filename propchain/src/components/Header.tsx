@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { WalletConnect } from "./WalletConnect";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,22 +30,25 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-700 uppercase" style={{ marginRight: '150px' }}>
-          <Link href="/" className="transition-colors duration-200 hover:text-yellow-600">Home</Link>
-          <Link href="/explore" className="transition-colors duration-200 hover:text-yellow-600">Explore</Link>
-          <Link href="/contacts" className="transition-colors duration-200 hover:text-yellow-600">Contacts</Link>
-          <Link href="#" className="transition-colors duration-200 hover:text-yellow-600">Access</Link>
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="ml-6 flex flex-col justify-center items-center cursor-pointer group"
-            aria-label="Open menu"
-          >
-            <div className="w-6 h-0.5 bg-gray-700 mb-1 transition-all duration-400 group-hover:bg-yellow-600"></div>
-            <div className="w-6 h-0.5 bg-gray-700 mb-1 transition-all duration-400 group-hover:bg-yellow-600"></div>
-            <div className="w-6 h-0.5 bg-gray-700 transition-all duration-400 group-hover:bg-yellow-600"></div>
-          </button>
-        </nav>
+        <div className="flex items-center gap-4" style={{ marginRight: '150px' }}>
+          <WalletConnect />
+          <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-700 uppercase">
+            <Link href="/" className="transition-colors duration-200 hover:text-yellow-600">Home</Link>
+            <Link href="/explore" className="transition-colors duration-200 hover:text-yellow-600">Explore</Link>
+            <Link href="/contacts" className="transition-colors duration-200 hover:text-yellow-600">Contacts</Link>
+            <Link href="#" className="transition-colors duration-200 hover:text-yellow-600">Access</Link>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="ml-6 flex flex-col justify-center items-center cursor-pointer group"
+              aria-label="Open menu"
+            >
+              <div className="w-6 h-0.5 bg-gray-700 mb-1 transition-all duration-400 group-hover:bg-yellow-600"></div>
+              <div className="w-6 h-0.5 bg-gray-700 mb-1 transition-all duration-400 group-hover:bg-yellow-600"></div>
+              <div className="w-6 h-0.5 bg-gray-700 transition-all duration-400 group-hover:bg-yellow-600"></div>
+            </button>
+          </nav>
+        </div>
       </header>
       {/* Sidebar menu and overlay with animation */}
       <div
