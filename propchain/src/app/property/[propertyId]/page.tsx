@@ -15,7 +15,7 @@ const dubaiProperty = {
   id: "5",
   name: "Dubai Marina Penthouse",
   address: "Dubai Marina, Dubai, UAE",
-  price: "500,000 $",
+  price: "550,000 $",
   description: "Luxurious penthouse with marina views",
   image: "/images/test.jpg",
   ltv: "70%",

@@ -59,11 +59,11 @@ const sampleProperties = [
   },
   {
     id: '5',
-    name: 'Dubai Marina Penthouse',
+    name: 'Marina Gate Tower 2',
     longitude: 55.1385,
     latitude: 25.0884,
-    price: '500,000',
-    description: 'Luxurious penthouse with marina views',
+    price: '550,000',
+    description: 'Tokenized for fractional ownership',
     image: '/property-data/prop1/prop1-11.avif'
   }
 ];
