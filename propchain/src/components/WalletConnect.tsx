@@ -29,12 +29,18 @@ export function WalletConnect() {
         <span className="text-sm">
           {address?.slice(0, 6)}...{address?.slice(-4)}
         </span>
-        <button
+        <a
           onClick={() => disconnect()}
-          className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700"
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', marginRight: '12px', marginLeft: '12px' }}
         >
-          Disconnect
-        </button>
+          <Image
+            src="/images/disconnect.png"
+            alt="Disconnect"
+            width={32}
+            height={32}
+          />
+          <span style={{ width: '65px', marginRight: '-45px' }}></span>
+        </a>
       </div>
     )
   }
