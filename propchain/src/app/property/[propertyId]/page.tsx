@@ -9,180 +9,40 @@ import "../../fonts.css";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-// Mock property data (replace with real data source)
-const sampleProperties = [
-  {
-    id: "1",
-    name: "Modern Apartment",
-    address: "123 Main St, Prague, Czech Republic",
-    price: "254,948 $",
-    description: "A beautiful property in Prague",
-    image: "/images/home1.jpg",
-    ltv: "64.8%",
-    period: "18 months",
-    country: "Czech Republic",
-    interest: "11% + 1%",
-    schedule: "Bullet",
-    progress: 29,
+// Mock property data for Dubai property
+const dubaiProperty = {
+  id: "5",
+  name: "Dubai Marina Penthouse",
+  address: "Dubai Marina, Dubai, UAE",
+  price: "500,000 $",
+  description: "Luxurious penthouse with marina views",
+  image: "/images/test.jpg",
+  ltv: "70%",
+  period: "24 months",
+  country: "UAE",
+  interest: "12% + 1.5%",
+  schedule: "Monthly",
+  highlights: [
+    "Stunning penthouse with panoramic views of Dubai Marina and the Arabian Gulf.",
+    "High-end finishes and premium appliances throughout the property.",
+    "Access to exclusive marina facilities and private beach club."
+  ],
+  overview: "This premium penthouse in Dubai Marina offers an exceptional investment opportunity in one of Dubai's most sought-after locations. The property features modern architecture, luxury finishes, and breathtaking views of the marina and city skyline.",
+  plan: [
+    "Secure long-term rental agreements with high-net-worth individuals.",
+    "Implement value-add improvements to maximize rental returns.",
+    "Explore potential for short-term luxury rentals during peak seasons."
+  ],
+  location: {
+    city: "Dubai",
+    district: "Dubai Marina",
     highlights: [
-      "Self-contained units ranging from 23.24 m² to 30.09 m², each designed as a studio-style apartment.",
-      "Estimated rental potential of €500-€600 per unit/month, offering strong cash flow during the holding period.",
-      "Prime location: city center, close to public transport and amenities."
-    ],
-    overview: "The loan is used to refinance previously secured loans by leveraging a fully renovated property located at 123 Main St, Prague. The property is ideally suited for high-quality non-residential premises - administrative premises, tailored for rental income and real estate market.",
-    plan: [
-      "Refinance existing obligations.",
-      "Provide working capital while the six units are rented out.",
-      "Gradually market and sell each unit at a projected price of ~€3,600/m²."
-    ],
-    location: {
-      city: "Prague",
-      district: "City Center",
-      highlights: [
-        "Situated in the city center, a highly sought-after area known for its architectural heritage and urban lifestyle.",
-        "Just 1 km from Old Town, with excellent walkability and access to key urban hubs.",
-        "Multiple public transport routes within a 150 m radius for seamless citywide connectivity."
-      ]
-    }
-  },
-  {
-    id: "2",
-    name: "Luxury Villa",
-    address: "45 Garden Street, Prague 1, Czech Republic",
-    price: "450,000 $",
-    description: "Spacious villa with garden in Prague 1",
-    image: "/images/home2.jpg",
-    ltv: "60%",
-    period: "24 months",
-    country: "Czech Republic",
-    interest: "10.5% + 1.2%",
-    schedule: "Quarterly",
-    progress: 45,
-    highlights: [
-      "Luxurious 5-bedroom villa with private garden and swimming pool.",
-      "High-end finishes including marble countertops and custom cabinetry.",
-      "Smart home technology integration throughout the property."
-    ],
-    overview: "This exclusive villa represents a premium investment opportunity in one of Prague's most prestigious neighborhoods. The property combines traditional architecture with modern luxury amenities, making it highly attractive for both long-term rental and eventual resale.",
-    plan: [
-      "Complete final renovations and landscaping.",
-      "Secure high-end rental agreements with corporate clients.",
-      "Market the property to international buyers after the holding period."
-    ],
-    location: {
-      city: "Prague",
-      district: "Prague 1",
-      highlights: [
-        "Located in a quiet, upscale residential area with 24/7 security.",
-        "Walking distance to diplomatic quarter and international schools.",
-        "Easy access to major highways and Prague Castle."
-      ]
-    }
-  },
-  {
-    id: "3",
-    name: "City Center Loft",
-    address: "78 Industrial Way, Prague 7, Czech Republic",
-    price: "320,000 $",
-    description: "Modern loft in the heart of Prague",
-    image: "/images/home3.jpg",
-    ltv: "65%",
-    period: "12 months",
-    country: "Czech Republic",
-    interest: "12% + 1%",
-    schedule: "Monthly",
-    progress: 65,
-    highlights: [
-      "Converted industrial space with exposed brick and high ceilings.",
-      "Open floor plan with flexible living spaces.",
-      "Premium location in Prague's creative district."
-    ],
-    overview: "This unique loft property offers an excellent investment opportunity in Prague's rapidly developing creative district. The property combines industrial heritage with modern design, making it particularly attractive to young professionals and creative businesses.",
-    plan: [
-      "Complete final interior renovations.",
-      "Target short-term rental market through premium platforms.",
-      "Explore potential for commercial use as creative office space."
-    ],
-    location: {
-      city: "Prague",
-      district: "Prague 7",
-      highlights: [
-        "Located in the heart of Prague's creative district.",
-        "Surrounded by art galleries, cafes, and co-working spaces.",
-        "Excellent public transport connections and bike lanes."
-      ]
-    }
-  },
-  {
-    id: "4",
-    name: "Modern District Apartment",
-    address: "92 Innovation Street, Prague 4, Czech Republic",
-    price: "280,000 $",
-    description: "Modern apartment in Prague's vibrant district",
-    image: "/images/home4.jpg",
-    ltv: "70%",
-    period: "15 months",
-    country: "Czech Republic",
-    interest: "11.5% + 1.3%",
-    schedule: "Bi-monthly",
-    progress: 38,
-    highlights: [
-      "Contemporary 3-bedroom apartment with smart home features.",
-      "Energy-efficient design with solar panels and smart thermostats.",
-      "Access to building amenities including gym and rooftop garden."
-    ],
-    overview: "This modern apartment represents a solid investment in Prague's up-and-coming district. The property features contemporary design and sustainable features, making it attractive to environmentally conscious tenants and buyers.",
-    plan: [
-      "Implement smart home technology upgrades.",
-      "Secure long-term rental agreements with tech professionals.",
-      "Market to young families and professionals after renovations."
-    ],
-    location: {
-      city: "Prague",
-      district: "Prague 4",
-      highlights: [
-        "Located in a rapidly developing tech hub.",
-        "Close to shopping centers and recreational facilities.",
-        "Direct metro connection to city center."
-      ]
-    }
-  },
-  {
-    id: "5",
-    name: "Dubai Marina Penthouse",
-    address: "Dubai Marina, Dubai, UAE",
-    price: "500,000 $",
-    description: "Luxurious penthouse with marina views",
-    image: "/images/test.jpg",
-    ltv: "70%",
-    period: "24 months",
-    country: "UAE",
-    interest: "12% + 1.5%",
-    schedule: "Monthly",
-    progress: 55,
-    highlights: [
-      "Stunning penthouse with panoramic views of Dubai Marina and the Arabian Gulf.",
-      "High-end finishes and premium appliances throughout the property.",
-      "Access to exclusive marina facilities and private beach club."
-    ],
-    overview: "This premium penthouse in Dubai Marina offers an exceptional investment opportunity in one of Dubai's most sought-after locations. The property features modern architecture, luxury finishes, and breathtaking views of the marina and city skyline.",
-    plan: [
-      "Secure long-term rental agreements with high-net-worth individuals.",
-      "Implement value-add improvements to maximize rental returns.",
-      "Explore potential for short-term luxury rentals during peak seasons."
-    ],
-    location: {
-      city: "Dubai",
-      district: "Dubai Marina",
-      highlights: [
-        "Located in the heart of Dubai Marina, one of the most prestigious waterfront communities.",
-        "Walking distance to Dubai Marina Mall and the beach.",
-        "Excellent connectivity to major highways and Dubai Metro."
-      ]
-    }
-  },
-  // ... more properties
-];
+      "Located in the heart of Dubai Marina, one of the most prestigious waterfront communities.",
+      "Walking distance to Dubai Marina Mall and the beach.",
+      "Excellent connectivity to major highways and Dubai Metro."
+    ]
+  }
+};
 
 // Add this above the main component
 interface CircularProgressProps {
@@ -190,6 +50,7 @@ interface CircularProgressProps {
   size?: number;
   stroke?: number;
 }
+
 function CircularProgress({ percent, size = 80, stroke = 7 }: CircularProgressProps) {
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -245,9 +106,9 @@ function CircularProgress({ percent, size = 80, stroke = 7 }: CircularProgressPr
   );
 }
 
-export default function PropertyDetailsPage() {
+export default function DubaiPropertyPage() {
   const params = useParams();
-  const property = sampleProperties.find((p) => p.id === params.propertyId);
+  const property = dubaiProperty;
 
   // Add state for investment amount in USD
   const [investment, setInvestment] = useState<string>("50");
@@ -279,17 +140,6 @@ export default function PropertyDetailsPage() {
       <Header />
       {/* Property Title at the Top */}
       <div className="w-full max-w-5xl mx-auto px-2 md:px-6 pt-8 pb-2" style={{marginTop: '100px', marginBottom: '-20px', position: 'relative'}}>
-        {/* <div style={{
-          height: '50px',
-          width: '50vw',
-          background: 'linear-gradient(to right, #eee6d5 60%, rgba(238,230,213,0) 100%)',
-          position: 'absolute',
-          left: 'calc(-50vw + 50%)',
-          marginTop: '27px',
-          top: 0,
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}></div> */}
         <div style={{
           height: '1px',
           width: '50vw',
@@ -307,7 +157,7 @@ export default function PropertyDetailsPage() {
       <main className="flex-1 w-full max-w-5xl mx-auto px-2 md:px-6 py-10" style={{marginTop: '0px'}}>
         {/* Top Section: Image, Badges, and Summary */}
         <div className="relative w-full overflow-hidden shadow-lg border border-gray-200 mb-8" style={{height: '340px', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem', borderBottomLeftRadius: 0, borderBottomRightRadius: 0}}>
-          {/* Property Image (carousel placeholder) */}
+          {/* Property Image */}
           <Image
             src={property.image}
             alt={property.name}
@@ -315,35 +165,22 @@ export default function PropertyDetailsPage() {
             className="object-cover"
             style={{zIndex: 1}}
           />
-          {/* Carousel Arrows (static for now) */}
-          <button className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow-md z-10 hover:bg-white" style={{border: '1px solid #eee'}}>
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow-md z-10 hover:bg-white" style={{border: '1px solid #eee'}}>
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-          </button>
           {/* Status and Info Badges */}
           <div className="absolute top-4 left-4 flex gap-2 z-10">
             <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-semibold px-3 py-1 rounded">Open</span>
             <span className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded flex items-center gap-1"><svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3 days left</span>
           </div>
           <div className="absolute top-4 right-4 flex gap-2 z-10">
-            <span className="bg-[#ffffff] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Up to 1% Bonus interest</span>
-            <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Viewed by 226 investors</span>
-          </div>
-          {/* Carousel dots (static) */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            {[0,1,2,3,4].map(i => (
-              <span key={i} className={`w-2 h-2 rounded-full ${i===0 ? 'bg-gray-800' : 'bg-gray-300'}`}></span>
-            ))}
+            <span className="bg-[#ffffff] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Up to 1.5% Bonus interest</span>
+            <span className="bg-[#fff9f0] text-[#ea9800] text-xs font-medium px-3 py-1 rounded">Viewed by 156 investors</span>
           </div>
         </div>
         {/* Summary Card */}
         <div className="w-full bg-white rounded-xl shadow border border-gray-100 flex flex-wrap justify-between items-center px-6 py-4 mb-8" style={{marginTop: '-40px', zIndex: 2, position: 'relative', fontFamily: 'Montserrat, sans-serif'}}>
           <div className="flex flex-col items-center min-w-[120px]">
-            <div className="mb-1"><CircularProgress percent={property.progress} size={80} stroke={7} /></div>
-            <span className="text-xs text-gray-400 mt-1">{Math.round(Number(property.price.replace(/[^0-9.-]+/g, '')) * (1 - property.progress / 100)).toLocaleString()}$ left</span>
-            <span className="text-xs text-gray-400">{Math.round(property.progress / 5)} investors</span>
+            <div className="mb-1"><CircularProgress percent={45} size={80} stroke={7} /></div>
+            <span className="text-xs text-gray-400 mt-1">275,000$ left</span>
+            <span className="text-xs text-gray-400">32 investors</span>
           </div>
           <div className="flex flex-col items-center min-w-[120px]">
             <span className="text-base text-gray-900">{property.price}</span>
@@ -368,22 +205,9 @@ export default function PropertyDetailsPage() {
           <div className="flex flex-col items-center min-w-[120px]">
             <span className="text-base text-gray-900">{property.schedule}</span>
             <span className="text-xs text-gray-500">Schedule type</span>
-            <span className="text-xs text-gray-400">Quarterly payments</span>
+            <span className="text-xs text-gray-400">Monthly payments</span>
           </div>
         </div>
-        {/* Decorative divider as on landing page */}
-        <div
-            style={{
-              height: '400px',
-              width: '100vw',
-              position: 'absolute',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              backgroundImage: "url('/images/main2.jpg')",
-              backgroundPosition: 'center bottom',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
         {/* Investment and Location Sections */}
         <div className="w-full flex flex-col md:flex-row gap-8 mb-10" style={{ position: 'relative', zIndex: 2, marginTop: '60px' }}>
           {/* Enter amount to invest card */}
@@ -433,9 +257,9 @@ export default function PropertyDetailsPage() {
             />
             <div className="flex justify-between text-gray-500 text-sm mb-2">
               <span>{investment} $</span>
-              <span>{Math.round(Number(property.price.replace(/[^0-9.-]+/g, '')) * (1 - property.progress / 100)).toLocaleString()} $</span>
+              <span>275,000 $</span>
             </div>
-            <div className="mb-6 text-base">Potential earnings: <span className="font-semibold" style={{ color: '#ea9800' }}>€{((investmentNum * Number(property.interest.split('%')[0]) / 100)).toFixed(2)}</span> <span className="text-gray-700">({property.interest})</span></div>
+            <div className="mb-6 text-base">Potential earnings: <span className="font-semibold" style={{ color: '#ea9800' }}>€12.50</span> <span className="text-gray-700">(12%)</span></div>
             <a
               href="#"
               className="w-full block py-2 text-lg font-medium border text-center"
@@ -475,7 +299,7 @@ export default function PropertyDetailsPage() {
               <div className="text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif', position: 'relative', zIndex: 1, textTransform: 'uppercase', fontWeight: 400, fontSize: '18px' }}>Location</div>
             </div>
             <div className="mb-2 text-gray-900 font-medium">{property.address}</div>
-            <div className="mb-2 text-gray-500 text-sm">Reg. nr: 1094-0456-6012:0042 • Total area: 191.09m²</div>
+            <div className="mb-2 text-gray-500 text-sm">Reg. nr: 1094-0456-6012:0042 • Total area: 250.00m²</div>
             <div className="w-full h-36 bg-gray-200 flex items-center justify-center mb-3 relative overflow-hidden" style={{ borderRadius: '8px' }}>
               <iframe
                 title="Property Location"
@@ -512,7 +336,7 @@ export default function PropertyDetailsPage() {
               </span>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <span className="px-3 py-1 rounded text-xs font-semibold flex items-center gap-1" style={{ background: '#fff9f0', color: '#ea9800' }}><svg width="14" height="14" fill="none" stroke="#ea9800" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2"/></svg>RESIDENTIAL</span>
+              <span className="px-3 py-1 rounded text-xs font-semibold flex items-center gap-1" style={{ background: '#fff9f0', color: '#ea9800' }}><svg width="14" height="14" fill="none" stroke="#ea9800" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2"/></svg>LUXURY</span>
             </div>
           </div>
         </div>
