@@ -267,15 +267,30 @@ export default function TokensPage() {
   return (
     <div className={`min-h-screen flex flex-col bg-white ${montserrat.className}`}>
       <Header />
-      <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 mt-20">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+      {/* Decorative background image */}
+      <div
+        style={{
+          height: '1000px',
+          width: '100vw',
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundImage: "url('/images/main2.jpg')",
+          backgroundPosition: 'center bottom',
+          backgroundRepeat: 'no-repeat',
+        }}
+      ></div>
+      <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 mt-20" style={{ position: 'relative', zIndex: 2, marginTop: '120px' }}>
+        <div className="bg-white shadow-lg p-8">
           <h1 className="text-3xl font-semibold mb-8" style={{ fontFamily: 'Kaftan, serif', fontWeight: 400 }}>
             Dubai Marina Gate Tower 2 Token (DMG)
           </h1>
           <TokenContent />
         </div>
       </main>
-      <Footer />
+      <div className="-mt-1 z-1">
+        <Footer />
+      </div>
     </div>
   );
 } 

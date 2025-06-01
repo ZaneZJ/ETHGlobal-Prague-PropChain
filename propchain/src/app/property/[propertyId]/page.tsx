@@ -183,6 +183,63 @@ interface PropertyImage {
   alt: string;
 }
 
+function RealEstateChatBot() {
+  const [messages, setMessages] = useState([
+    { role: "assistant", content: "👋 Hi! How can I help you with your real estate questions?" }
+  ]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const sendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    const newMessages = [...messages, { role: "user", content: input }];
+    setMessages(newMessages);
+    setInput("");
+    setLoading(true);
+
+    const res = await fetch("/api/ai-assistant", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: newMessages }),
+    });
+    const data = await res.json();
+    setMessages([...newMessages, { role: "assistant", content: data.message }]);
+    setLoading(false);
+  };
+
+  return (
+    <div className="flex flex-col h-full">
+      <div className="flex-1 bg-gray-50 rounded p-4 overflow-y-auto mb-4" style={{ minHeight: '360px', maxHeight: '420px' }}>
+        {messages.map((msg, idx) => (
+          <div key={idx} className={`mb-2 text-sm ${msg.role === "assistant" ? "text-gray-700" : "text-gray-500 text-right"}`}>
+            {msg.content}
+          </div>
+        ))}
+        {loading && <div className="mb-2 text-sm text-gray-400">AI is typing…</div>}
+      </div>
+      <form onSubmit={sendMessage} className="flex gap-2">
+        <input
+          type="text"
+          placeholder="Type a message..."
+          className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-[#ea9800] transition-colors"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          disabled={loading}
+        />
+        <button
+          type="submit"
+          className="bg-black text-white px-8 py-3 text-sm tracking-wider hover:bg-[#ea9800] transition-colors duration-300 mx-auto block md:inline-block uppercase"
+          style={{ letterSpacing: '0.06em' }}
+          disabled={loading}
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  );
+}
+
 export default function DubaiPropertyPage() {
   const params = useParams();
   const property = dubaiProperty;
@@ -537,23 +594,7 @@ export default function DubaiPropertyPage() {
               }}></div>
               <div className="text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif', position: 'relative', zIndex: 1, textTransform: 'uppercase', fontWeight: 400, fontSize: '18px' }}>AI ASSISTANT</div>
             </div>
-            <div className="flex-1 bg-gray-50 rounded p-4 overflow-y-auto mb-4" style={{ minHeight: '260px', maxHeight: '320px' }}>
-              {/* Placeholder chat messages */}
-              <div className="mb-2 text-sm text-gray-700">👋 Hi! How can I help you with your contract?</div>
-              <div className="mb-2 text-sm text-gray-500 text-right">Type your message below…</div>
-            </div>
-            <div className="flex gap-2">
-              <input type="text" placeholder="Type a message..." className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-[#ea9800] transition-colors" />
-              <a
-                href="#"
-                role="button"
-                tabIndex={0}
-                className="bg-black text-white px-8 py-3 text-sm tracking-wider hover:bg-[#ea9800] transition-colors duration-300 mx-auto block md:inline-block uppercase"
-                style={{ letterSpacing: '0.06em' }}
-              >
-                Send
-              </a>
-            </div>
+            <RealEstateChatBot />
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-10" style={{ position: 'relative', zIndex: 2, marginBottom: '-50px' }}>
