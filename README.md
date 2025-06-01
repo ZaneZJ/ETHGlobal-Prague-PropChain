@@ -1,5 +1,10 @@
 # 🏙️ PropChain: Tokenize, Rent, and Invest in Real Estate on Ethereum
+
 https://eth-global-prague-prop-chain.vercel.app/
+
+# Demo Video
+
+[Watch the demo on Loom](https://www.loom.com/share/1ac8d604f3a0454fbdfed44ec462731c?sid=be4eb7ba-662f-4796-a36a-c80619f3c737)
 
 ## 🚀 What is PropChain?
 
@@ -15,4 +20,4 @@ PropChain is a next-generation dApp that transforms real estate into a liquid, b
 
 ## 🌍 The Vision
 
-We’re building the DeFi of Real Estate — a world where property is as programmable and accessible as any ERC-20 token, and where anyone, anywhere, can invest, rent, and build wealth on-chain.
+We're building the DeFi of Real Estate — a world where property is as programmable and accessible as any ERC-20 token, and where anyone, anywhere, can invest, rent, and build wealth on-chain.
